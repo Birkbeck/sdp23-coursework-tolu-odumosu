@@ -14,5 +14,20 @@ public class SubtractInstruction extends Instruction {
         this.result = result;
         this.source = source;
     }
+
+    @Override
+    public int execute(Machine m) {
+        int value1 = m.getRegisters().get(result);
+        int value2 = m.getRegisters().get(source);
+        m.getRegisters().set(result, value2 - value1);
+        return NORMAL_PROGRAM_COUNTER_UPDATE;
+    }
+
+    @Override
+    public String toString() {
+        return getLabelString() + getOpcode() + " " + result + " " + source;
+    }
 }
+
+
 
