@@ -72,16 +72,22 @@ public final class Translator {
                 String s = scan();
                 return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
-            case SubtractInstruction.OP_CODE -> {
+            case SubInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
-                return new SubtractInstruction(label, Register.valueOf(r), Register.valueOf(s));
+                return new SubInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
             case MulInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
                 return new MulInstruction(label, Register.valueOf(r), Register.valueOf(s));
+            }
+
+            case DivInstruction.OP_CODE -> {
+                String r = scan();
+                String s = scan();
+                return new DivInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
             // TODO: add code for all other types of instructions

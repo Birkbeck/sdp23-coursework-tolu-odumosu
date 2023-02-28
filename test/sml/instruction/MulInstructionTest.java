@@ -10,7 +10,8 @@ import sml.Machine;
 import sml.Registers;
 
 import static sml.Registers.Register.*;
-public class SubtractInstructionTest {
+
+public class MulInstructionTest {
     private Machine machine;
     private Registers registers;
 
@@ -31,7 +32,7 @@ public class SubtractInstructionTest {
     void executeValid() {
         registers.set(EAX, 5);
         registers.set(EBX, 6);
-        Instruction instruction = new SubtractInstruction(null, EAX, EBX);
+        Instruction instruction = new MulInstruction(null, EAX, EBX);
         instruction.execute(machine);
         Assertions.assertEquals(11, machine.getRegisters().get(EAX));
     }
@@ -40,7 +41,7 @@ public class SubtractInstructionTest {
     void executeValidTwo() {
         registers.set(EAX, -5);
         registers.set(EBX, 6);
-        Instruction instruction = new SubtractInstruction(null, EAX, EBX);
+        Instruction instruction = new MulInstruction(null, EAX, EBX);
         instruction.execute(machine);
         Assertions.assertEquals(1, machine.getRegisters().get(EAX));
     }
