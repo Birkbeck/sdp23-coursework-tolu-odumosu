@@ -30,9 +30,8 @@ public class JnzInstructionTest {
 
     @Test
     void executeValid() {
-        registers.set(EAX, 5);
-        registers.set(EBX, 6);
-        Instruction instruction = new AddInstruction(null, EAX, EBX);
+        registers.set(EAX, 0);
+        Instruction instruction = new JnzInstruction(null, EAX);
         instruction.execute(machine);
         Assertions.assertEquals(11, machine.getRegisters().get(EAX));
     }
@@ -40,8 +39,7 @@ public class JnzInstructionTest {
     @Test
     void executeValidTwo() {
         registers.set(EAX, -5);
-        registers.set(EBX, 6);
-        Instruction instruction = new AddInstruction(null, EAX, EBX);
+        Instruction instruction = new JnzInstruction(null, EAX);
         instruction.execute(machine);
         Assertions.assertEquals(1, machine.getRegisters().get(EAX));
     }
