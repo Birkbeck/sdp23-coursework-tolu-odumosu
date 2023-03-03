@@ -5,14 +5,12 @@ import sml.Machine;
 import sml.RegisterName;
 
 public class OutInstruction extends Instruction{
-    private final RegisterName result;
     private final RegisterName source;
 
     public static final String OP_CODE = "out";
 
-    public OutInstruction(String label, RegisterName result, RegisterName source) {
+    public OutInstruction(String label, RegisterName source) {
         super(label, OP_CODE);
-        this.result = result;
         this.source = source;
     }
 

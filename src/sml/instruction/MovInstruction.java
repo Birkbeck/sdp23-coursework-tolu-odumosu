@@ -6,25 +6,25 @@ import sml.RegisterName;
 
 public class MovInstruction extends Instruction{
     private final RegisterName result;
-    private final RegisterName integer;
+    private final int x;
 
     public static final String OP_CODE = "mov";
 
-    public MovInstruction(String label, RegisterName result, RegisterName source) {
+    public MovInstruction(String label, RegisterName result, int x) {
         super(label, OP_CODE);
         this.result = result;
-        this.integer = source;
+        this.x = x;
     }
 
     @Override
     public int execute(Machine m) {
-        int value = m.getRegisters().get(integer);
+        int value = x;
         m.getRegisters().set(result, value);
         return NORMAL_PROGRAM_COUNTER_UPDATE;
     }
 
     @Override
     public String toString() {
-        return getLabelString() + getOpcode() + " " + result + " " + integer;
+        return getLabelString() + getOpcode() + " " + result + " " + x;
     }
 }

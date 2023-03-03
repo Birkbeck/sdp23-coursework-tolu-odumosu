@@ -1,6 +1,5 @@
 package sml.instruction;
 
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +11,7 @@ import sml.Registers;
 
 import static sml.Registers.Register.*;
 
-public class MovInstructionTest {
+public class JnzInstructionTest {
     private Machine machine;
     private Registers registers;
 
@@ -31,19 +30,19 @@ public class MovInstructionTest {
 
     @Test
     void executeValid() {
-        registers.set(EAX, 1);
-        int x = 5;
-        Instruction instruction = new MovInstruction(null, EAX, x);
+        registers.set(EAX, 5);
+        registers.set(EBX, 6);
+        Instruction instruction = new AddInstruction(null, EAX, EBX);
         instruction.execute(machine);
-        Assertions.assertEquals(machine.getRegisters().get(EAX));
+        Assertions.assertEquals(11, machine.getRegisters().get(EAX));
     }
 
     @Test
     void executeValidTwo() {
-        registers.set(EAX, 3);
-        int x = 10;
-        Instruction instruction = new MovInstruction(null, EAX, x);
+        registers.set(EAX, -5);
+        registers.set(EBX, 6);
+        Instruction instruction = new AddInstruction(null, EAX, EBX);
         instruction.execute(machine);
-        Assertions.assertEquals(machine.getRegisters().get(EAX));
+        Assertions.assertEquals(1, machine.getRegisters().get(EAX));
     }
 }

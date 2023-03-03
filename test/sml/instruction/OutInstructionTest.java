@@ -31,7 +31,7 @@ public class OutInstructionTest {
     @Test
     void executeValid() {
         registers.set(EBX, 6);
-        Instruction instruction = new OutInstruction(null, EAX, EBX);
+        Instruction instruction = new OutInstruction(null, EBX);
         instruction.execute(machine);
         Assertions.assertEquals(machine.getRegisters().get(EAX));
     }
@@ -39,7 +39,7 @@ public class OutInstructionTest {
     @Test
     void executeValidTwo() {
         registers.set(EBX, 11);
-        Instruction instruction = new OutInstruction(null, EAX, EBX);
+        Instruction instruction = new OutInstruction(null, EBX);
         instruction.execute(machine);
         Assertions.assertEquals(machine.getRegisters().get(EAX));
     }
